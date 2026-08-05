@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus SnackPass | SASTRA University</title>
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <header id="main-header" class="site-header">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <span class="logo">🍽 Campus SnackPass</span>
+            </div>
+            <ul class="navbar-links">
+                <li><button id="home-btn" class="nav-item">Home</button></li>
+                <li>
+                    <button id="cart-btn" class="nav-item cart-link">
+                        <span class="cart-icon">🛒 Cart</span>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Landing Page Wrapper for SPA State Management -->
+    <div id="landing-page">
+        <main id="main-content">
+            
+            <!-- Hero Section -->
+            <section id="hero" class="hero-section">
+                <div class="hero-layout">
+                    <!-- Left Column -->
+                    <div class="hero-content">
+                        <h1 class="hero-title">Skip the Queue.</h1>
+                        <p class="hero-subtitle">
+                            Order ahead from your favourite SASTRA canteens. <br>
+                            Collect your food using a digital token without waiting in long queues.
+                        </p>
+                        <button id="browse-canteens-btn" class="btn-primary">Browse Canteens</button>
+                    </div>
+                    
+                    <!-- Right Column -->
+                    <div class="hero-visual">
+                        <img src="images/hero/hero-food-collage.jpg" alt="Collage of delicious food from SASTRA canteens" class="hero-image">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Campus SnackPass Section -->
+            <section id="features" class="features-section">
+                <header class="section-header">
+                    <h2 class="section-title">Why Campus SnackPass?</h2>
+                </header>
+                
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <article class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-heading">Skip the Queue</h3>
+                        <p class="feature-description">Avoid long queues by placing your order in advance.</p>
+                    </article>
+                    
+                    <!-- Feature 2 -->
+                    <article class="feature-card">
+                        <div class="feature-icon">🎟</div>
+                        <h3 class="feature-heading">Digital Token</h3>
+                        <p class="feature-description">Receive an instant token after checkout and collect your order easily.</p>
+                    </article>
+                    
+                    <!-- Feature 3 -->
+                    <article class="feature-card">
+                        <div class="feature-icon">🏫</div>
+                        <h3 class="feature-heading">Multiple Campus Canteens</h3>
+                        <p class="feature-description">Browse menus from Krishna Canteen, Southern Canteen, Velan Cafe and Vinayaka Canteen.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Choose Your Canteen Section -->
+            <section id="canteens" class="canteens-section">
+                <header class="section-header">
+                    <p class="section-intro">Serving Across Campus</p>
+                    <p class="section-sub-intro">Choose where you'd like to order today.</p>
+                    <h2 class="section-title">Choose Your Canteen</h2>
+                </header>
+                
+                <div class="canteens-grid">
+                    <!-- Krishna Canteen -->
+                    <button class="canteen-card" data-canteen="kc">
+                        <img src="images/canteens/kc.jpg" alt="Krishna Canteen" class="canteen-image">
+                        <div class="canteen-details">
+                            <header class="canteen-header">
+                                <h3 class="canteen-name">Krishna Canteen (KC)</h3>
+                            </header>
+                            <p class="canteen-description">The campus favourite for everyday meals and snacks.</p>
+                            <footer class="canteen-metadata">
+                                <span class="badge badge-open">🟢 Open Now</span>
+                                <span class="wait-time">⏱ Avg Wait: 8-10 mins</span>
+                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
+                            </footer>
+                        </div>
+                    </button>
+
+                    <!-- Southern Canteen -->
+                    <button class="canteen-card" data-canteen="southern">
+                        <img src="images/canteens/southern.jpg" alt="Southern Canteen" class="canteen-image">
+                        <div class="canteen-details">
+                            <header class="canteen-header">
+                                <h3 class="canteen-name">Southern Canteen</h3>
+                            </header>
+                            <p class="canteen-description">Perfect for breakfast, dosas and refreshments.</p>
+                            <footer class="canteen-metadata">
+                                <span class="badge badge-open">🟢 Open Now</span>
+                                <span class="wait-time">⏱ Avg Wait: 5-7 mins</span>
+                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
+                            </footer>
+                        </div>
+                    </button>
+
+                    <!-- Velan Cafe -->
+                    <button class="canteen-card" data-canteen="velan">
+                        <img src="images/canteens/velan.jpg" alt="Velan Cafe" class="canteen-image">
+                        <div class="canteen-details">
+                            <header class="canteen-header">
+                                <h3 class="canteen-name">Velan Cafe</h3>
+                            </header>
+                            <p class="canteen-description">Coffee, cakes and evening cravings.</p>
+                            <footer class="canteen-metadata">
+                                <span class="badge badge-open">🟢 Open Now</span>
+                                <span class="wait-time">⏱ Avg Wait: 3-5 mins</span>
+                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
+                            </footer>
+                        </div>
+                    </button>
+
+                    <!-- Vinayaka Canteen -->
+                    <button class="canteen-card" data-canteen="vinayaka">
+                        <img src="images/canteens/vinayaka.jpg" alt="Vinayaka Canteen" class="canteen-image">
+                        <div class="canteen-details">
+                            <header class="canteen-header">
+                                <h3 class="canteen-name">Vinayaka Canteen</h3>
+                            </header>
+                            <p class="canteen-description">Fresh meals and hot snacks throughout the day.</p>
+                            <footer class="canteen-metadata">
+                                <span class="badge badge-open">🟢 Open Now</span>
+                                <span class="wait-time">⏱ Avg Wait: 10-12 mins</span>
+                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
+                            </footer>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer id="main-footer" class="site-footer">
+            <div class="footer-container">
+                <p>Campus SnackPass</p>
+                <p>Designed for SASTRA University</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
