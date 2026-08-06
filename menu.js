@@ -7,7 +7,9 @@ const state = {
     canteen: selectedCanteen,
     category: "all",
     search: "",
-    cart: {}
+    cart: {},
+    pinned: false,
+    sort:"default"
 };
 
 const CANTEENS = {
@@ -151,16 +153,25 @@ function renderMenu(menuItems)
 
 function updateMenu() 
 {
-
     let filtered = MENU.filter(item=>item.canteens.includes(state.canteen));
 
     filtered = filtered.filter(item=>item.categories.includes(state.category)|| state.category === "all");
 
     filtered = filtered.filter(item=>item.name.toLowerCase().includes(state.search.toLowerCase()));
 
+    if (state.sort === "low-high") 
+        filtered.sort((a, b) => a.price - b.price);
+
+    else if (state.sort === "high-low") 
+        filtered.sort((a, b) => b.price - a.price);
+
     renderMenu(filtered);
     updateFloatingCart();
 
+    let cartSidebar=document.querySelector("#cart-sidebar");
+
+    if (!cartSidebar.hidden)
+        renderCart();
 }
 
 
@@ -245,6 +256,9 @@ openCartBtn.addEventListener("click", () => {
 });
 
 closeCartBtn.addEventListener("click", () => {
+
+    if (state.pinned)
+        return;
 
     cartSidebar.hidden = true;
 
@@ -367,6 +381,8 @@ function showTokenModal(token)
     const now = new Date();
 
     document.getElementById("order-time").textContent =now.toLocaleTimeString([], {hour: "2-digit",minute: "2-digit"});
+
+    state.search = "";
 }
 
 const checkoutBtn = document.querySelector("#checkout-btn");
@@ -388,6 +404,59 @@ searchInput.addEventListener("input", () => {
 
 });
 
+
+const pinBtn = document.querySelector("#pin-cart-btn");
+
+pinBtn.addEventListener("click", () => {
+
+    state.pinned = !state.pinned;
+
+    cartSidebar.classList.toggle("pinned", state.pinned);
+
+    pinBtn.textContent = state.pinned? "📌 Unpin Cart": "📌 Pin Cart";
+
+});
+
+const sortLowBtn = document.querySelector("#sort-low");
+const sortHighBtn = document.querySelector("#sort-high");
+
+sortLowBtn.addEventListener("click", () => {
+
+    if (state.sort === "low-high") 
+    {
+        state.sort = "default";
+        sortLowBtn.classList.remove("active");
+    }
+
+    else 
+    {
+        state.sort = "low-high";
+        sortLowBtn.classList.add("active");
+        sortHighBtn.classList.remove("active");
+    }
+
+    updateMenu();
+
+});
+
+sortHighBtn.addEventListener("click", () => {
+
+    if (state.sort === "high-low") 
+    {
+        state.sort = "default";
+        sortHighBtn.classList.remove("active");
+    }
+
+    else 
+    {
+        state.sort = "high-low";
+        sortHighBtn.classList.add("active");
+        sortLowBtn.classList.remove("active");
+    }
+
+    updateMenu();
+
+});
 
 
 
