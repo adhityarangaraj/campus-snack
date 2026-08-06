@@ -3,6 +3,7 @@
 // ===============================
 
 const KC_ONLY = ["kc"];
+const SOUTHERN_ONLY=["southern"];
 
 const BREAKFAST_CANTEENS = ["kc", "southern", "vinayaka"];
 const CHINESE_CANTEENS = ["kc", "southern", "vinayaka"];
