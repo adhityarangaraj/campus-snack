@@ -458,6 +458,8 @@ sortHighBtn.addEventListener("click", () => {
 
 });
 
+updateMenu();
+
 
 
 
