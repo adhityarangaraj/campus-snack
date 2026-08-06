@@ -4,166 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus SnackPass | SASTRA University</title>
+    <meta name="description" content="Order ahead from your favourite SASTRA canteens and skip the queue with Campus SnackPass.">
 </head>
 <body>
 
-    <!-- Sticky Navigation Bar -->
-    <header id="main-header" class="site-header">
-        <nav class="navbar">
-            <div class="navbar-brand">
-                <span class="logo">🍽 Campus SnackPass</span>
+    <header>
+        <nav aria-label="Main Navigation">
+            <div>
+                <a href="index.html" aria-label="Campus SnackPass Home">
+                    <span>🍽 Campus SnackPass</span>
+                </a>
             </div>
-            <ul class="navbar-links">
-                <li><button id="home-btn" class="nav-item">Home</button></li>
+            <ul>
                 <li>
-                    <button id="cart-btn" class="nav-item cart-link">
-                        <span class="cart-icon">🛒 Cart</span>
-                        <span id="cart-count" class="cart-badge">0</span>
-                    </button>
+                    <a href="index.html">Home</a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <!-- Landing Page Wrapper for SPA State Management -->
-    <div id="landing-page">
-        <main id="main-content">
-            
-            <!-- Hero Section -->
-            <section id="hero" class="hero-section">
-                <div class="hero-layout">
-                    <!-- Left Column -->
-                    <div class="hero-content">
-                        <h1 class="hero-title">Skip the Queue.</h1>
-                        <p class="hero-subtitle">
-                            Order ahead from your favourite SASTRA canteens. <br>
-                            Collect your food using a digital token without waiting in long queues.
-                        </p>
-                        <button id="browse-canteens-btn" class="btn-primary">Browse Canteens</button>
-                    </div>
-                    
-                    <!-- Right Column -->
-                    <div class="hero-visual">
-                        <img src="images/hero/hero-food-collage.jpg" alt="Collage of delicious food from SASTRA canteens" class="hero-image">
-                    </div>
-                </div>
-            </section>
-
-            <!-- Why Campus SnackPass Section -->
-            <section id="features" class="features-section">
-                <header class="section-header">
-                    <h2 class="section-title">Why Campus SnackPass?</h2>
-                </header>
-                
-                <div class="features-grid">
-                    <!-- Feature 1 -->
-                    <article class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3 class="feature-heading">Skip the Queue</h3>
-                        <p class="feature-description">Avoid long queues by placing your order in advance.</p>
-                    </article>
-                    
-                    <!-- Feature 2 -->
-                    <article class="feature-card">
-                        <div class="feature-icon">🎟</div>
-                        <h3 class="feature-heading">Digital Token</h3>
-                        <p class="feature-description">Receive an instant token after checkout and collect your order easily.</p>
-                    </article>
-                    
-                    <!-- Feature 3 -->
-                    <article class="feature-card">
-                        <div class="feature-icon">🏫</div>
-                        <h3 class="feature-heading">Multiple Campus Canteens</h3>
-                        <p class="feature-description">Browse menus from Krishna Canteen, Southern Canteen, Velan Cafe and Vinayaka Canteen.</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- Choose Your Canteen Section -->
-            <section id="canteens" class="canteens-section">
-                <header class="section-header">
-                    <p class="section-intro">Serving Across Campus</p>
-                    <p class="section-sub-intro">Choose where you'd like to order today.</p>
-                    <h2 class="section-title">Choose Your Canteen</h2>
-                </header>
-                
-                <div class="canteens-grid">
-                    <!-- Krishna Canteen -->
-                    <button class="canteen-card" data-canteen="kc">
-                        <img src="images/canteens/kc.jpg" alt="Krishna Canteen" class="canteen-image">
-                        <div class="canteen-details">
-                            <header class="canteen-header">
-                                <h3 class="canteen-name">Krishna Canteen (KC)</h3>
-                            </header>
-                            <p class="canteen-description">The campus favourite for everyday meals and snacks.</p>
-                            <footer class="canteen-metadata">
-                                <span class="badge badge-open">🟢 Open Now</span>
-                                <span class="wait-time">⏱ Avg Wait: 8-10 mins</span>
-                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
-                            </footer>
-                        </div>
-                    </button>
-
-                    <!-- Southern Canteen -->
-                    <button class="canteen-card" data-canteen="southern">
-                        <img src="images/canteens/southern.jpg" alt="Southern Canteen" class="canteen-image">
-                        <div class="canteen-details">
-                            <header class="canteen-header">
-                                <h3 class="canteen-name">Southern Canteen</h3>
-                            </header>
-                            <p class="canteen-description">Perfect for breakfast, dosas and refreshments.</p>
-                            <footer class="canteen-metadata">
-                                <span class="badge badge-open">🟢 Open Now</span>
-                                <span class="wait-time">⏱ Avg Wait: 5-7 mins</span>
-                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
-                            </footer>
-                        </div>
-                    </button>
-
-                    <!-- Velan Cafe -->
-                    <button class="canteen-card" data-canteen="velan">
-                        <img src="images/canteens/velan.jpg" alt="Velan Cafe" class="canteen-image">
-                        <div class="canteen-details">
-                            <header class="canteen-header">
-                                <h3 class="canteen-name">Velan Cafe</h3>
-                            </header>
-                            <p class="canteen-description">Coffee, cakes and evening cravings.</p>
-                            <footer class="canteen-metadata">
-                                <span class="badge badge-open">🟢 Open Now</span>
-                                <span class="wait-time">⏱ Avg Wait: 3-5 mins</span>
-                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
-                            </footer>
-                        </div>
-                    </button>
-
-                    <!-- Vinayaka Canteen -->
-                    <button class="canteen-card" data-canteen="vinayaka">
-                        <img src="images/canteens/vinayaka.jpg" alt="Vinayaka Canteen" class="canteen-image">
-                        <div class="canteen-details">
-                            <header class="canteen-header">
-                                <h3 class="canteen-name">Vinayaka Canteen</h3>
-                            </header>
-                            <p class="canteen-description">Fresh meals and hot snacks throughout the day.</p>
-                            <footer class="canteen-metadata">
-                                <span class="badge badge-open">🟢 Open Now</span>
-                                <span class="wait-time">⏱ Avg Wait: 10-12 mins</span>
-                                <span class="menu-info">🍽 <span class="menu-item-count"></span></span>
-                            </footer>
-                        </div>
-                    </button>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- Footer Section -->
-        <footer id="main-footer" class="site-footer">
-            <div class="footer-container">
-                <p>Campus SnackPass</p>
-                <p>Designed for SASTRA University</p>
+    <main>
+        
+        <section id="hero" aria-labelledby="hero-heading">
+            <div>
+                <h1 id="hero-heading">Skip the Queue.</h1>
+                <p>Order ahead from your favourite SASTRA canteens and collect using a digital token.</p>
+                <a href="#canteens">Browse Canteens</a>
             </div>
-        </footer>
-    </div>
+            <div>
+                <img src="images/hero/hero-food-collage.jpg" alt="Collage of delicious food from various SASTRA canteens">
+            </div>
+        </section>
+
+        <section id="canteens" aria-labelledby="canteens-heading">
+            <h2 id="canteens-heading">Choose Your Canteen</h2>
+            
+            <div>
+                <!-- Krishna Canteen -->
+                <a href="menu.html?canteen=kc" aria-labelledby="kc-name">
+                    <img src="images/canteens/kc.jpg" alt="Front view of Krishna Canteen">
+                    <article>
+                        <h3 id="kc-name">Krishna Canteen (KC)</h3>
+                        <p>The campus favourite for everyday meals and snacks.</p>
+                        <ul>
+                            <li><span aria-hidden="true">🟢</span> Open Now</li>
+                            <li>Average wait: 8-10 mins</li>
+                            <li>120 menu items</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <!-- Southern Canteen -->
+                <a href="menu.html?canteen=southern" aria-labelledby="southern-name">
+                    <img src="images/canteens/southern.jpg" alt="Front view of Southern Canteen">
+                    <article>
+                        <h3 id="southern-name">Southern Canteen</h3>
+                        <p>Perfect for breakfast, dosas and refreshments.</p>
+                        <ul>
+                            <li><span aria-hidden="true">🟢</span> Open Now</li>
+                            <li>Average wait: 5-7 mins</li>
+                            <li>85 menu items</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <!-- Velan Cafe -->
+                <a href="menu.html?canteen=velan" aria-labelledby="velan-name">
+                    <img src="images/canteens/velan.jpg" alt="Front view of Velan Cafe">
+                    <article>
+                        <h3 id="velan-name">Velan Cafe</h3>
+                        <p>Coffee, cakes and evening cravings.</p>
+                        <ul>
+                            <li><span aria-hidden="true">🟢</span> Open Now</li>
+                            <li>Average wait: 3-5 mins</li>
+                            <li>45 menu items</li>
+                        </ul>
+                    </article>
+                </a>
+
+                <!-- Vinayaka Canteen -->
+                <a href="menu.html?canteen=vinayaka" aria-labelledby="vinayaka-name">
+                    <img src="images/canteens/vinayaka.jpg" alt="Front view of Vinayaka Canteen">
+                    <article>
+                        <h3 id="vinayaka-name">Vinayaka Canteen</h3>
+                        <p>Fresh meals and hot snacks throughout the day.</p>
+                        <ul>
+                            <li><span aria-hidden="true">🟢</span> Open Now</li>
+                            <li>Average wait: 10-12 mins</li>
+                            <li>95 menu items</li>
+                        </ul>
+                    </article>
+                </a>
+            </div>
+        </section>
+
+        <section id="features" aria-labelledby="features-heading">
+            <h2 id="features-heading">Why Campus SnackPass?</h2>
+            
+            <div>
+                <article>
+                    <span aria-hidden="true">⚡</span>
+                    <h3>Skip the Queue</h3>
+                    <p>Avoid long waiting lines by ordering before reaching the canteen.</p>
+                </article>
+                
+                <article>
+                    <span aria-hidden="true">🎟</span>
+                    <h3>Digital Token</h3>
+                    <p>Receive an instant token after placing your order.</p>
+                </article>
+                
+                <article>
+                    <span aria-hidden="true">🏫</span>
+                    <h3>Multiple Campus Canteens</h3>
+                    <p>Browse menus from all major SASTRA campus canteens.</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Campus SnackPass</p>
+        <p>Designed for SASTRA University</p>
+    </footer>
 
 </body>
 </html>
