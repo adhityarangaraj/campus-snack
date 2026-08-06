@@ -82,15 +82,47 @@ function renderMenu(menuItems)
         minusBtn.className = "minus-btn";
         minusBtn.dataset.id = item.id;
 
+        minusBtn.addEventListener("click", () => {
+
+            if (!state.cart[item.id]) 
+                return;
+
+            state.cart[item.id]--;
+
+            if (state.cart[item.id] === 0) 
+                delete state.cart[item.id];
+            
+            updateMenu();
+
+        });
+
         const quantity = document.createElement("span");
-        quantity.textContent = "0";
+        const qty = state.cart[item.id] || 0;
+        quantity.textContent = qty;
         quantity.className = "item-quantity";
         quantity.dataset.id = item.id;
+
+        if (qty > 0) 
+            card.classList.add("selected");
+        else 
+            card.classList.remove("selected");
+
 
         const plusBtn = document.createElement("button");
         plusBtn.textContent = "+";
         plusBtn.className = "plus-btn";
         plusBtn.dataset.id = item.id;
+
+        plusBtn.addEventListener("click", () => {
+
+            if (state.cart[item.id]) 
+                state.cart[item.id]++;
+            else 
+                state.cart[item.id] = 1;
+            
+            updateMenu();
+
+        });
 
         controls.appendChild(minusBtn);
         controls.appendChild(quantity);
@@ -116,6 +148,7 @@ function updateMenu()
     filtered = filtered.filter(item=>item.name.toLowerCase().includes(state.search.toLowerCase()));
 
     renderMenu(filtered);
+    updateFloatingCart();
 
 }
 
@@ -129,14 +162,165 @@ categoryButtons.forEach(button => {
         state.category = button.dataset.category;
 
         categoryButtons.forEach(btn=>btn.classList.remove("active"));
-
         button.classList.add("active");
 
         updateMenu();
+        
 
     });
 
 });
+
+function getTotalItems() 
+{
+
+    let total = 0;
+
+    for (const qty of Object.values(state.cart)) 
+    {
+        total += qty;
+    }
+
+    return total;
+}
+
+function getGrandTotal() 
+{
+
+    let total = 0;
+
+    MENU.forEach(item => {
+
+        const qty = state.cart[item.id] || 0;
+
+        total += qty * item.price;
+
+    });
+
+    return total;
+
+}
+
+function updateFloatingCart() 
+{
+
+    const floatingCart = document.getElementById("floating-cart");
+
+    const totalItems = getTotalItems();
+
+    if(totalItems === 0) 
+    {
+        floatingCart.hidden = true;
+        return;
+    }
+
+    floatingCart.hidden = false;
+
+    document.getElementById("floating-cart-count").textContent =`${totalItems} Items`;
+
+    document.getElementById("floating-cart-total").textContent =`₹${getGrandTotal()}`;
+
+}
+
+const openCartBtn = document.querySelector("#open-cart-btn");
+const closeCartBtn = document.querySelector("#close-cart-btn");
+const cartSidebar = document.querySelector("#cart-sidebar");
+
+openCartBtn.addEventListener("click", () => {
+
+    cartSidebar.hidden = false;
+    renderCart();
+
+});
+
+closeCartBtn.addEventListener("click", () => {
+
+    cartSidebar.hidden = true;
+
+});
+
+function renderCart() 
+{
+
+    const cartItems = document.getElementById("cart-items");
+    const emptyState = document.getElementById("cart-empty-state");
+
+    cartItems.innerHTML = "";
+
+    if (Object.keys(state.cart).length === 0)
+        emptyState.hidden = false;
+
+    else 
+    {
+        emptyState.hidden = true;
+
+        for (const [id, qty] of Object.entries(state.cart)) 
+        {
+
+            const item = MENU.find(menuItem => menuItem.id === id);
+
+            const row = document.createElement("div");
+            row.className = "cart-item";
+
+            const name = document.createElement("h4");
+            name.textContent = item.name;
+
+            const price = document.createElement("p");
+            price.textContent = `₹${item.price}`;
+
+            const controls = document.createElement("div");
+            controls.className = "cart-controls";
+
+            const minusBtn = document.createElement("button");
+            minusBtn.textContent = "-";
+
+            const quantity = document.createElement("span");
+            quantity.textContent = qty;
+
+            const plusBtn = document.createElement("button");
+            plusBtn.textContent = "+";
+
+            minusBtn.addEventListener("click", () => {
+
+                state.cart[id]--;
+
+                if(state.cart[id] === 0) 
+                {
+                    delete state.cart[id];
+                }
+
+                updateMenu();
+                renderCart();
+
+            });
+
+            plusBtn.addEventListener("click", () => {
+
+                state.cart[id]++;
+
+                updateMenu();
+                renderCart();
+
+            });
+
+            controls.appendChild(minusBtn);
+            controls.appendChild(quantity);
+            controls.appendChild(plusBtn);
+
+            row.appendChild(name);
+            row.appendChild(price);
+            row.appendChild(controls);
+
+            cartItems.appendChild(row);
+
+        }
+
+    }
+
+    document.getElementById("cart-total-items").textContent=getTotalItems();
+    document.getElementById("cart-grand-total").textContent =`₹${getGrandTotal()}`;
+
+}
 
 
 
