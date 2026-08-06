@@ -56,6 +56,17 @@ function renderMenu(menuItems)
 
     menuGrid.innerHTML = "";
 
+    if (menuItems.length === 0) 
+    {
+        menuGrid.innerHTML = `
+            <div class="empty-menu">
+                <h2>🔍 No items found</h2>
+                <p>Try another search.</p>
+            </div>`;
+
+        return;
+    }
+
     menuItems.forEach(item => {
 
         const card = document.createElement("article");
@@ -321,6 +332,63 @@ function renderCart()
     document.getElementById("cart-grand-total").textContent =`₹${getGrandTotal()}`;
 
 }
+
+function checkout() 
+{
+
+    if (Object.keys(state.cart).length === 0) 
+    {
+        alert("🛒 Your cart is empty");
+        return;
+    }
+
+    const token = Math.floor(Math.random() * 900) + 100;
+    state.cart = {};
+
+    updateMenu();
+    cartSidebar.hidden = true;
+
+    showTokenModal(token);
+
+}
+
+function showTokenModal(token) 
+{
+    const current = CANTEENS[state.canteen];
+
+    document.getElementById("token-number").textContent =`Token #${token}`;
+
+    document.getElementById("token-canteen").textContent=current.name;
+
+    document.getElementById("token-wait").textContent=current.wait;
+
+    document.getElementById("success-modal").hidden = false;
+
+    const now = new Date();
+
+    document.getElementById("order-time").textContent =now.toLocaleTimeString([], {hour: "2-digit",minute: "2-digit"});
+}
+
+const checkoutBtn = document.querySelector("#checkout-btn");
+const homeBtn = document.querySelector("#home-btn");
+
+checkoutBtn.addEventListener("click", checkout);
+
+homeBtn.addEventListener("click", () => {
+    window.location.href = "index.html";
+});
+
+const searchInput = document.querySelector("#search-input");
+
+searchInput.addEventListener("input", () => {
+
+    state.search = searchInput.value.toLowerCase();
+
+    updateMenu();
+
+});
+
+
 
 
 
