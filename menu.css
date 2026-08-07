@@ -68,6 +68,10 @@ h1, h2, h3, h4 {
     color: var(--color-text-primary);
 }
 
+[hidden] {
+    display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -130,10 +134,20 @@ nav[aria-label="Main Navigation"] a[aria-label="Campus SnackPass Home"]:hover {
 /* ============================================
    MAIN CONTENT WRAPPER
    ============================================ */
-main {
+#main-content {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 2rem 1.5rem 6rem;
+    transition: padding-right var(--transition-base);
+}
+
+/* Only shift content over on screens wide enough to have room.
+   On mobile the sidebar is a full-width overlay, so shifting
+   content would just squash it for no visual benefit. */
+@media (min-width: 1024px) {
+    #main-content.cart-open {
+        padding-right: 380px;
+    }
 }
 
 /* ============================================
@@ -268,7 +282,7 @@ section[aria-label="Search Menu"]::before {
 #menu-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .menu-card {
@@ -304,15 +318,15 @@ section[aria-label="Search Menu"]::before {
 
 .menu-title {
     font-size: 1.05rem;
-    padding: 1rem 1.1rem 0.25rem;
+    padding: 1.35rem 1.35rem 0.35rem;
 }
 
 .menu-price {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--color-primary);
-    padding: 0 1.1rem;
-    margin-bottom: 0.9rem;
+    padding: 0 1.35rem;
+    margin-bottom: 1.1rem;
 }
 
 /* ---- Quantity Controls (menu cards) ---- */
@@ -320,8 +334,8 @@ section[aria-label="Search Menu"]::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    padding: 0 1.1rem 1.1rem;
+    gap: 1.1rem;
+    padding: 0 1.35rem 1.35rem;
     margin-top: auto;
 }
 
@@ -449,7 +463,7 @@ section[aria-label="Search Menu"]::before {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 1.75rem;
+    padding: 2rem 2rem;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -502,27 +516,37 @@ section[aria-label="Search Menu"]::before {
 #cart-items {
     flex: 1;
     overflow-y: auto;
-    padding: 0.5rem 1.75rem;
+    padding: 1rem 2rem;
 }
 
+/* Grid, not flex+space-between: fixed columns keep the price
+   in the exact same x-position on every row regardless of how
+   long the food name is. This is the alignment fix. */
 .cart-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.25rem 0;
+    column-gap: 1.25rem;
+    padding: 1.75rem 0;
     border-bottom: 1px solid var(--color-border);
 }
 
-.cart-item h4 {
+.cart-name {
     font-size: 0.98rem;
     font-weight: 600;
-    margin-bottom: 0.25rem;
+    /* keep long names from pushing price/controls around or wrapping messily */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 0.5rem;
 }
 
-.cart-item p {
+.cart-price {
     font-size: 0.88rem;
-    color: var(--color-text-secondary);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: right;
+    white-space: nowrap;
 }
 
 .cart-controls {
@@ -560,7 +584,7 @@ section[aria-label="Search Menu"]::before {
 
 /* ---- Cart footer ---- */
 #cart-sidebar footer {
-    padding: 1.5rem 1.75rem;
+    padding: 2rem;
     border-top: 1px solid var(--color-border);
     background-color: var(--color-bg);
 }
@@ -570,7 +594,7 @@ section[aria-label="Search Menu"]::before {
     justify-content: space-between;
     font-size: 0.92rem;
     color: var(--color-text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 #cart-grand-total {
@@ -581,9 +605,9 @@ section[aria-label="Search Menu"]::before {
 
 #pin-cart-btn {
     width: 100%;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.75rem;
+    padding: 0.9rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
     font-weight: 600;
     font-size: 0.9rem;
     color: var(--color-primary);
@@ -726,7 +750,7 @@ section[aria-label="Search Menu"]::before {
    RESPONSIVE — TABLET (≥768px)
    ============================================ */
 @media (min-width: 768px) {
-    main { padding: 2.5rem 1.5rem 6rem; }
+    #main-content { padding: 2.5rem 1.5rem 6rem; }
 
     #menu-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -757,10 +781,6 @@ section[aria-label="Search Menu"]::before {
     #menu-grid {
         grid-template-columns: repeat(4, 1fr);
     }
-}
-
-[hidden] {
-    display: none !important;
 }
 
 #main-content {
