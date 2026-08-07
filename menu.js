@@ -50,6 +50,7 @@ const arr = MENU.filter(m => m.canteens.includes(selectedCanteen));
 
 document.getElementById("canteen-count").textContent =`${arr.length} Items`;
 
+const mainContent = document.getElementById("main-content");
 
 function renderMenu(menuItems)
 {
@@ -75,8 +76,14 @@ function renderMenu(menuItems)
         card.className = "menu-card";
 
         const image = document.createElement("img");
-        image.src = `images/menu/${item.image}`;
+        image.src = `images/${item.image}`;
         image.alt = item.name;
+
+        image.onerror = () => {
+            image.onerror = null;
+            image.src = "images/placeholder.png";
+        };
+
         image.className = "menu-image";
 
         const title = document.createElement("h3");
@@ -251,6 +258,7 @@ const cartSidebar = document.querySelector("#cart-sidebar");
 openCartBtn.addEventListener("click", () => {
 
     cartSidebar.hidden = false;
+    mainContent.classList.add("cart-open");
     renderCart();
 
 });
@@ -261,6 +269,7 @@ closeCartBtn.addEventListener("click", () => {
         return;
 
     cartSidebar.hidden = true;
+    mainContent.classList.remove("cart-open");
 
 });
 
@@ -289,9 +298,11 @@ function renderCart()
 
             const name = document.createElement("h4");
             name.textContent = item.name;
+            name.className = "cart-name";
 
             const price = document.createElement("p");
             price.textContent = `₹${item.price}`;
+            price.className = "cart-price";
 
             const controls = document.createElement("div");
             controls.className = "cart-controls";
@@ -361,6 +372,7 @@ function checkout()
 
     updateMenu();
     cartSidebar.hidden = true;
+    mainContent.classList.remove("cart-open");
 
     showTokenModal(token);
 
@@ -457,6 +469,7 @@ sortHighBtn.addEventListener("click", () => {
     updateMenu();
 
 });
+
 
 updateMenu();
 
