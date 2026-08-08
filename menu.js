@@ -26,7 +26,7 @@ const CANTEENS = {
     },
 
     velan: {
-        name: "Velan Cafe",
+        name: "Velaa Cafe",
         status: "🟢 Open",
         wait: "3-5 mins"
     },
