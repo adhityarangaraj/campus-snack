@@ -47,7 +47,7 @@ const breakfast = [
         name: "Onion Dosa",
         price: 50,
         categories: ["all", "breakfast"],
-        image: "dosa.jpg",
+        image: "onion-dosa.jpg",
         canteens: BREAKFAST_CANTEENS
     },
     {
@@ -342,14 +342,6 @@ const lunch = [
         categories: ["all", "lunch"],
         image: "curd-rice.jpg",
         canteens: LUNCH_CANTEENS
-    },
-    {
-        id: "variety-meals",
-        name: "Variety Meals",
-        price: 110,
-        categories: ["all", "lunch"],
-        image: "variety-meals.jpg",
-        canteens: KC_ONLY
     }
 ];
 
