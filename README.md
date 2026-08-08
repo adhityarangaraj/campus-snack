@@ -99,7 +99,6 @@ Or visit the deployed website below.
 
 ---
 
-## 🌐 Live Demo
 
 ## 🌐 Live Demo
 
