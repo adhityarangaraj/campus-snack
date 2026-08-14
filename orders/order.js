@@ -40,10 +40,16 @@ else
 
             const itemRow = document.createElement("p");
 
-            itemRow.textContent =
-                `${item.quantity} * ${item.name} - ₹${item.price * item.quantity}`;
+           const itemName = document.createElement("span");
+           itemName.textContent = `${item.quantity} * ${item.name}`;
 
-            items.appendChild(itemRow);
+           const itemPrice = document.createElement("span");
+           itemPrice.textContent = `₹${item.price * item.quantity}`;
+
+           itemRow.appendChild(itemName);
+           itemRow.appendChild(itemPrice);
+           items.appendChild(itemRow);
+
         });
 
         const total = document.createElement("p");

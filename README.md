@@ -18,6 +18,7 @@ Campus SnackPass allows students to browse menus, filter food items, manage thei
 - 🛒 Interactive shopping cart
 - 📌 Pin or unpin cart sidebar
 - 🎟 Frontend-generated digital order token
+- 📜 View past orders stored locally in the browser
 
 
 ---
@@ -52,7 +53,7 @@ Search, filter, sort and manage your order.
 
 Digital token generation with estimated wait time.
 
-![Confirmation](screenshots/token.png)
+![Confirmation](screenshots/token.jpeg)
 
 ## 🛠 Tech Stack
 
@@ -103,6 +104,17 @@ Or visit the deployed website below.
 ## 🌐 Live Demo
 
 🚀 **[Visit Campus SnackPass](https://adhityarangaraj.github.io/campus-snack/)**
+
+## ⚠️ Current Limitations
+
+- This is a frontend-only application and does not use a backend or database.
+- Order history is stored locally in the browser using `localStorage`.
+- Past orders are browser-specific and are not associated with a user profile or account.
+- Canteen menus, availability, wait times, and other operational data are static and intended for demonstration purposes.
+- Order tokens are generated on the frontend and do not represent real canteen-issued tokens.
+- Order status and other real-time canteen information are not connected to a live system.
+
+---
 
 ## 📌 Future Improvements
 

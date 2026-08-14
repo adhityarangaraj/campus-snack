@@ -375,6 +375,38 @@ function checkout()
     }
 
     const token = `${prefixes[selectedCanteen]}-${Math.floor(Math.random() * 900) + 100}`;
+    
+    const orderItems = Object.entries(state.cart).map(([id, quantity]) => {
+    const item = MENU.find(menuItem => menuItem.id === id);
+
+        return {
+            name: item.name,
+            price: item.price,
+            quantity: quantity
+        };
+    });
+
+    const now = new Date();
+
+    const order = {
+        token: token,
+        canteen: currentCanteen.name,
+        items: orderItems,
+        total: getGrandTotal(),
+        date: now.toLocaleDateString(),
+        time: now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        })
+    };
+
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders.push(order);
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+    
+    
     state.cart = {};
 
     updateMenu();
