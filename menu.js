@@ -38,6 +38,13 @@ const CANTEENS = {
     }
 };
 
+const prefixes = {
+    kc: "KC",
+    southern: "SC",
+    velan: "VC",
+    vinayaka: "VN"
+};
+
 const currentCanteen = CANTEENS[selectedCanteen];
 
 document.getElementById("canteen-name").textContent = currentCanteen.name;
@@ -367,7 +374,7 @@ function checkout()
         return;
     }
 
-    const token = Math.floor(Math.random() * 900) + 100;
+    const token = `${prefixes[selectedCanteen]}-${Math.floor(Math.random() * 900) + 100}`;
     state.cart = {};
 
     updateMenu();

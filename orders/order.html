@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | Campus SnackPass</title>
+    <meta name="description" content="View your past Campus SnackPass orders.">
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+    <header>
+        <nav aria-label="Main Navigation">
+            <div>
+                <a href="index.html" aria-label="Campus SnackPass Home">
+                    <span>🍽 Campus SnackPass</span>
+                </a>
+            </div>
+
+            <div>
+                <a href="index.html">Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="orders" aria-labelledby="orders-heading">
+
+            <h1 id="orders-heading">My Orders</h1>
+
+            <p>
+                Your past orders are stored locally in this browser.
+                They are not connected to a user profile and will not be
+                available on another browser or device.
+            </p>
+
+            <div id="orders-container">
+                <!-- Order cards will be generated here by JavaScript -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Campus SnackPass</p>
+        <p>Designed for SASTRA University</p>
+    </footer>
+
+    <script type="module" src="order.js"></script>
+
+</body>
+</html>
