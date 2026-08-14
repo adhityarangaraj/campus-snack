@@ -105,14 +105,13 @@ Or visit the deployed website below.
 
 🚀 **[Visit Campus SnackPass](https://adhityarangaraj.github.io/campus-snack/)**
 
+---
+
 ## ⚠️ Current Limitations
 
-- This is a frontend-only application and does not use a backend or database.
-- Order history is stored locally in the browser using `localStorage`.
-- Past orders are browser-specific and are not associated with a user profile or account.
-- Canteen menus, availability, wait times, and other operational data are static and intended for demonstration purposes.
-- Order tokens are generated on the frontend and do not represent real canteen-issued tokens.
-- Order status and other real-time canteen information are not connected to a live system.
+- The application is currently frontend-only, with no backend or database.
+- Past orders are stored using `localStorage`, so they are specific to the browser and device being used.
+- Canteen information and order-related data are currently based on static/demo data.
 
 ---
 
